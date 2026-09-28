@@ -3,7 +3,7 @@ async function saveUser() {
     const email = document.getElementById("email").value;
 
     const response = await fetch(
-        "https://demobgis.gamer.gd.infinityfreeapp.com/api/create-user.php",
+        "https://demobgis.gamer.gd.com/api/create-user.php",
         {
             method: "POST",
             headers: {
