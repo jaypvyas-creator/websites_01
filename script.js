@@ -17,13 +17,19 @@ async function saveUser() {
             })
         });
 
-        console.log("Status:", response.status);
+        const text = await response.text();
 
-        const rawResponse = await response.text();
+        console.log("HTTP Status:", response.status);
+        console.log("Response:", text);
 
-        console.log("Raw response:", rawResponse);
+        try {
+            const data = JSON.parse(text);
 
-        result.innerText = rawResponse;
+            result.innerText = data.message || "Request completed";
+        } catch (e) {
+            result.innerText = "Server returned non-JSON response";
+            console.error(text);
+        }
 
     } catch (error) {
         console.error("Fetch error:", error);
